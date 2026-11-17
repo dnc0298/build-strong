@@ -5,7 +5,7 @@ export default function ProgramsHero() {
   return (
     <section className="relative flex min-h-[600px] items-center overflow-hidden bg-[#171514] md:min-h-[640px] lg:min-h-[680px]">
       <Image
-        src="/hero-2.png"
+        src="/HERO-2.png"
         alt=""
         fill
         priority
