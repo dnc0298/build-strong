@@ -13,23 +13,22 @@ export default function HeroSection() {
         priority
         sizes="100vw"
         className="
-          object-cover object-center
-          max-md:object-[34%_center]
-          md:max-lg:object-[30%_center]
-          [@media(orientation:portrait)]:md:max-lg:object-[60%_center]
-          [@media(min-width:700px)_and_(max-width:1500px)_and_(any-pointer:coarse)]:!object-[45%_center]
-          [@media(min-width:900px)_and_(max-width:1500px)_and_(orientation:landscape)_and_(any-pointer:coarse)]:!object-[48%_center]
-        "
+    object-cover object-[center_72%]
+    max-md:object-[34%_center]
+    md:max-lg:object-[30%_center]
+    [@media(orientation:portrait)]:md:max-lg:object-[60%_center]
+    [@media(min-width:700px)_and_(max-width:1500px)_and_(any-pointer:coarse)]:!object-[45%_center]
+    [@media(min-width:900px)_and_(max-width:1500px)_and_(orientation:landscape)_and_(any-pointer:coarse)]:!object-[48%_center]
+  "
       />
 
       {/* DESKTOP OVERLAYS */}
-      <div className="absolute inset-0 hidden bg-black/15 lg:block [@media(min-width:700px)_and_(max-width:1500px)_and_(any-pointer:coarse)]:!hidden" />
+      {/* DESKTOP OVERLAYS */}
+      <div className="absolute inset-y-0 right-0 hidden w-[55%] bg-gradient-to-l from-black/40 via-black/15 to-transparent lg:block [@media(min-width:700px)_and_(max-width:1500px)_and_(any-pointer:coarse)]:!hidden" />
 
-      <div className="absolute inset-y-0 right-0 hidden w-[62%] bg-gradient-to-l from-black/55 via-black/30 to-transparent lg:block [@media(min-width:700px)_and_(max-width:1500px)_and_(any-pointer:coarse)]:!hidden" />
+      <div className="absolute bottom-0 left-0 hidden h-[45%] w-[42%] bg-gradient-to-tr from-black/35 via-black/10 to-transparent lg:block [@media(min-width:700px)_and_(max-width:1500px)_and_(any-pointer:coarse)]:!hidden" />
 
-      <div className="absolute bottom-0 left-0 hidden h-[55%] w-[48%] bg-gradient-to-tr from-black/55 via-black/20 to-transparent lg:block [@media(min-width:700px)_and_(max-width:1500px)_and_(any-pointer:coarse)]:!hidden" />
-
-      <div className="absolute inset-x-0 bottom-0 hidden h-[35%] bg-gradient-to-t from-black/35 to-transparent lg:block [@media(min-width:700px)_and_(max-width:1500px)_and_(any-pointer:coarse)]:!hidden" />
+      <div className="absolute inset-x-0 bottom-0 hidden h-[28%] bg-gradient-to-t from-black/20 to-transparent lg:block [@media(min-width:700px)_and_(max-width:1500px)_and_(any-pointer:coarse)]:!hidden" />
 
       {/* TABLET OVERLAYS */}
       <div className="absolute inset-0 hidden bg-black/15 md:max-lg:block [@media(min-width:700px)_and_(max-width:1500px)_and_(any-pointer:coarse)]:!block" />

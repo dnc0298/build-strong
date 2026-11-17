@@ -33,6 +33,9 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-screen">
         <Header />
+        <div className="pointer-events-none fixed bottom-3 left-3 z-[60] rounded-full border border-white/20 bg-black/70 px-3 py-1.5 text-[10px] font-semibold tracking-[1.5px] text-white/85 backdrop-blur-md">
+          DEMO · PROIECT DE PORTOFOLIU
+        </div>
         <Footer>{children}</Footer>
       </body>
     </html>

@@ -369,7 +369,8 @@ export default function Footer({ children }) {
 
             {/* COPYRIGHT - STATIC YEAR */}
             <p className="text-center text-[10px] tracking-wide text-white/35">
-              © 2026 Build Strong. Toate drepturile rezervate.
+              Proiect demo cu conținut fictiv. Nu se oferă servicii reale. ©
+              2026 DNC
             </p>
 
             {/* DEVELOPER */}
