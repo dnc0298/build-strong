@@ -1,26 +1,317 @@
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3e5d9;
+  --foreground: #171514;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-soft-black: #171514;
+  --color-blush-pink: #ea91a5;
+  --color-warm-cream: #f3e5d9;
+
+  --font-sans: var(--font-roboto);
+  --font-heading: var(--font-jakarta);
+  --font-handwritten: var(--font-dancing);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-roboto), sans-serif;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-jakarta), sans-serif;
+}
+
+
+
+/* HANDWRITTEN ANIMATION */
+
+/* HANDWRITTEN WORD ANIMATION */
+
+.handwritten-word {
+  display: inline-block;
+  padding: 0.12em 0.12em 0.2em;
+  margin: -0.12em -0.12em -0.2em;
+  opacity: 0;
+  clip-path: inset(-15% 100% -25% 0);
+  animation: handwritten-reveal 0.9s ease-out forwards;
+}
+
+.handwritten-word {
+  display: inline-block;
+  padding: 0.12em 0.12em 0.2em;
+  margin: -0.12em -0.12em -0.2em;
+  opacity: 0;
+  clip-path: inset(-15% 100% -25% 0);
+  animation: handwritten-reveal 0.9s ease-out forwards;
+}
+
+@keyframes handwritten-reveal {
+  0% {
+    opacity: 0;
+    clip-path: inset(-15% 100% -25% 0);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 1;
+    clip-path: inset(-15% -2% -25% 0);
+  }
+
+  100% {
+    opacity: 1;
+    clip-path: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .handwritten-word {
+  display: inline-block;
+  padding: 0.12em 0.08em 0.2em;
+  margin: 0;
+  opacity: 0;
+  clip-path: inset(-15% 100% -25% 0);
+  animation: handwritten-reveal 0.9s ease-out forwards;
+}
+}
+
+/* UNDERLINE ANIMATION */
+
+@keyframes underline-draw {
+  from {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-underline-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: underline-draw 0.6s ease-out 4s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .handwritten-word {
+    opacity: 1;
+    clip-path: none;
+    animation: none;
+  }
+
+  .animate-underline-draw {
+    animation: none;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+
+
+/* =========================================
+   TRANSFORMATION STORY
+   HANDWRITTEN WORDS
+========================================= */
+
+.story-word {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+}
+
+.story-word.story-visible {
+  animation: story-handwrite 0.8s ease-out forwards;
+}
+
+@keyframes story-handwrite {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transform: translateY(5px);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    clip-path: inset(-15% -5% -20% 0);
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   CURVED ARROWS
+========================================= */
+
+.story-draw {
+  opacity: 0;
+}
+
+.story-draw.story-visible {
+  animation: arrow-container-show 0.01s linear forwards;
+  animation-delay: var(--arrow-delay, 0s);
+}
+
+.story-draw path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+}
+
+/* Decorative curl appears first */
+.story-draw.story-visible .arrow-flourish {
+  animation: draw-hand-line 0.55s ease-out forwards;
+  animation-delay: var(--arrow-delay, 0s);
+}
+
+/* Long flowing curved line */
+.story-draw.story-visible .arrow-line {
+  animation: draw-hand-line 1.05s ease-out forwards;
+  animation-delay: calc(var(--arrow-delay, 0s) + 0.35s);
+}
+
+/* Arrowhead appears last */
+.story-draw.story-visible .arrow-head {
+  animation: draw-hand-line 0.35s ease-out forwards;
+  animation-delay: calc(var(--arrow-delay, 0s) + 1.25s);
+}
+
+/* Final underline */
+.story-draw.story-visible .underline-path {
+  animation: draw-hand-line 1.1s ease-out forwards;
+  animation-delay: var(--arrow-delay, 0s);
+}
+
+@keyframes arrow-container-show {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes draw-hand-line {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 1;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .story-word,
+  .story-draw,
+  .story-draw path {
+    opacity: 1 !important;
+    clip-path: none !important;
+    animation: none !important;
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+.hero-desktop-overlay {
+  display: none !important;
+}
+
+
+@keyframes scroll-dot-fall-desktop {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    transform: translateY(35px);
+    opacity: 1;
+  }
+
+  90% {
+    transform: translateY(35px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+
+
+@keyframes scroll-arrow {
+  0% {
+    transform: translateY(-12px);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  80% {
+    transform: translateY(12px);
+    opacity: 1;
+  }
+
+  95% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(-12px);
+    opacity: 0;
+  }
+}
+
+
+
+
